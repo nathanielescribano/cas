@@ -16,3 +16,4 @@ gem "rspec-rails", ">= 2.11.0", :group => [:development, :test]
 gem "capybara", ">= 1.1.2", :group => :test
 gem "factory_girl_rails", ">= 4.0.0", :group => [:development, :test]
 gem "bootstrap-sass", ">= 2.1.0.0"
+gem "json"
