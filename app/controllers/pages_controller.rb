@@ -36,7 +36,7 @@ class PagesController < ApplicationController
       end
     end
     # we are limiting results for now..
-    @menu_item_data = @menu_item_data[0..15]
+    @menu_item_data = @menu_item_data[0..25]
     render :layout => false
   end
 
