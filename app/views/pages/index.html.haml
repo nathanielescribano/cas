@@ -1,6 +1,7 @@
 %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
 
 %form{ :action => ""}
+<<<<<<< HEAD
   .row-fluid
     .span3.offset9
       %h4
@@ -19,7 +20,7 @@
             %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text"}
           %li
             %label{:for => "max_price"} Max Price:
-            %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text"}
+            %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text", :disabled => @selected_items == nil ? nil : "disabled"}
     .span8
       #results
   .row-fluid
@@ -28,7 +29,6 @@
     .span4
       %input{:action => "submit", :type => "button", :value => "Add to Cart", :class => "btn btn-large", :id => "reload_submit_btn", :onclick => "postToSelf()"}
         
-
 %script{:type => "text/javascript"}
   :plain
     $(document).ready(function(){
