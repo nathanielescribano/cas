@@ -12,6 +12,11 @@
           #money_left_label
             money left
             %label{:id => "money_left"} #{@money_left if @money_left}
+    .span2
+      - if @selected_items
+        Cheap Cart Items
+        - for item in @selected_items
+          %label #{item[:name]} #{item[:price]}
   .row-fluid
     .span4#search_box
       - unless @money_left
