@@ -4,6 +4,12 @@ class PagesController < ApplicationController
 
   def index
     @selected_items = session[:selected_items]
+    if session[:max_price]
+      @money_left = session[:max_price]
+      @money_left = (@selected_items.reduce(@money_left.to_f) { |sum,v| sum - v[:price].to_f }).round(2).to_s
+    else
+      @money_left = nil
+    end
   end
 
   def search
