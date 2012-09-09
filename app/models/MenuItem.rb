@@ -4,10 +4,21 @@ class MenuItem
   def initialize(string)
     @data = JSON.parse(string)
   end
+
+  def find_venue_id_by_id(menu_item_id)
+    return nil unless menu_item_id
+    return nil unless !menu_item_id.empty?
+    return nil unless @data["objects"]
+    return nil unless @data["objects"].select { |o| o["id"] == menu_item_id }
+    return nil unless @data["objects"].select { |o| o["id"] == menu_item_id }.first
+    return nil unless @data["objects"].select { |o| o["id"] == menu_item_id }.first["venue"]
+    return nil unless @data["objects"].select { |o| o["id"] == menu_item_id }.first["venue"]["id"]
+    @data["objects"].select { |o| o["id"] == menu_item_id }.first["venue"]["id"]
+  end
  
   def self.test_string()
      <<eos
-{
+  {
     "meta": {
         "cache-expiry": 3600
     },
@@ -34,7 +45,7 @@ class MenuItem
             }
         }
     ]
-}
+  }
 eos
   end
 
