@@ -42,11 +42,16 @@
     }
     
     function postToSelf(){
-    	var allVals = [];
-      	$('#result_checkboxes :checked').each(function() {
-        	allVals[0] = ($(this).val());
-      	});
-    	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').val()+"&id="+allVals[0]+"&name="+"&price=");
+      checked_id = null
+      checked_name = null
+      checked_price = null
+      var allVals = [];
+        $('input:checked').each(function() {
+          checked_id = $(this).val();
+          checked_name = $(this).attr("name");
+          checked_price = $(this).attr("price");
+        });
+    	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
     }
 
     
