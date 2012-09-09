@@ -6,8 +6,8 @@ class PagesController < ApplicationController
     @selected_items = session[:selected_items]
     if session[:max_price]
       @money_left = session[:max_price]
-      used = @selected_items.reduce(@money_left.to_i) { |sum,v| sum - v[:price].to_i }
-      @money_left = (@money_left.to_i - used).to_s
+      used = @selected_items.reduce(@money_left.to_f) { |sum,v| sum - v[:price].to_f }
+      @money_left = (@money_left.to_f - used).to_s
     else
       @money_left = nil
     end
