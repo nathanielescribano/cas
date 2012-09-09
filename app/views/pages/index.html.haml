@@ -69,8 +69,7 @@
     }
 
     function restart(){
-      //alert("yeay");
-    	window.location.replace("http://localhost:3000/pages/restart");
+    	window.location.replace("/pages/restart");
     }
     
     function postToSelf(){
@@ -85,17 +84,15 @@
           checked_long = $(this).attr("item_long");
           checked_price = $(this).attr("price");
         });
-    	window.location.replace("http://localhost:3000/pages/add_to_cart?max_price=" + $('#max_price').val() + "&lat="+checked_lat+"&long="+checked_long+"&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
+    	window.location.replace("/pages/add_to_cart?max_price=" + $('#max_price').val() + "&lat="+checked_lat+"&long="+checked_long+"&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
     }
     
     function calculateResultCartTotal(){
-      //alert("shit");
       $("#money_left").text(parseFloat($("#money_left_hidden").val())-parseFloat($('.result_select').val()));
     }
 
 
     function finalize(){
-      //alert("yeay");
       window.location.replace("pages/finalize");
     }
 
