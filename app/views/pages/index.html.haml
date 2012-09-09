@@ -81,9 +81,11 @@
         $('option:selected').each(function() {
           checked_id = $(this).val();
           checked_name = $(this).attr("item_name");
+          checked_lat = $(this).attr("item_lat");
+          checked_long = $(this).attr("item_long");
           checked_price = $(this).attr("price");
         });
-    	window.location.replace("http://localhost:3000/pages/add_to_cart?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
+    	window.location.replace("http://localhost:3000/pages/add_to_cart?max_price=" + $('#max_price').val() + "&lat="+checked_lat+"&long="+checked_long+"&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
     }
     
     function calculateResultCartTotal(){

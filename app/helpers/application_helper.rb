@@ -10,11 +10,11 @@ module ApplicationHelper
     lc_result_hash  = lc.menu.search_by({ :name => search_hash['menu_item'],
                                           :price__lte => search_hash['money_left']})
     mi = MenuItem.new(lc_result_hash)
-    mi.item_list_with(['id', 'name', 'price'])
+    mi.item_list_with(['id', 'name', 'price', 'venue'])
   end
 
   def menu_item_data_from_param(p)
-    {:id => p[:id], :name => p[:name], :price => p[:price]}
+    {:id => p[:id], :name => p[:name], :price => p[:price], :lat => p[:lat], :long => p[:long]}
   end
 
   def find_vendor_by_menu_item_id(id)
@@ -26,6 +26,18 @@ module ApplicationHelper
 
   def sorted_menu_item_data(lc, search_hash)
     mid = menu_item_data(lc, search_hash)
+    mid.sort_by { |a| a["price"] }
+  end
+
+  def sorted_menu_item_data_with_vendor(lc, search_hash)
+    lat_and_long = "#{search_hash['lat']},#{search_hash['long']}"
+
+    lc_result_hash  = lc.menu.search_by({ :name => search_hash['menu_item'],
+                                          :price__lte => search_hash['money_left'],
+                                          :radius => 5,
+                                          :location => lat_and_long })
+    mi = MenuItem.new(lc_result_hash)
+    mid = mi.item_list_with(['id', 'name', 'price', 'venue'])
     mid.sort_by { |a| a["price"] }
   end
 

@@ -8,6 +8,8 @@
       :checked=>false,
       :value => item['id'],
       :item_name => item['name'],
+      :item_lat => item['lat'].to_s,
+      :item_long => item['long'].to_s,
       :price => item['price']}= h item['name'] + " " + item['price'].to_s
 
   %input{ :action => "submit", 

@@ -1,10 +1,10 @@
 class Venue
   attr_accessor :data
   
-  def initialize(string)
-    @data = JSON.parse(string)
+  def initialize(hash)
+    @data = hash
   end
- 
+
   def self.test_string()
      <<eos
   {
