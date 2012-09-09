@@ -3,7 +3,7 @@
     = "Results for #{@search_value}"
   - for item in @menu_item_data
     %div
-      %input{:type=>"checkbox", :name=>"result_checkboxes", :id => item['id'], :checked=>false, :value => item['id'], :name => item['name'], :price => item['price']}= item['name'] + " " + item['price'].to_s
+      %input{:type=>"radio", :name=>"result_radio", :id => item['id'], :checked=>false, :value => item['id'], :item_name => item['name'], :price => item['price']}= item['name'] + " " + item['price'].to_s
   %input{ :action => "submit", 
           :type => "button", 
           :value => "Add to Cart", 
