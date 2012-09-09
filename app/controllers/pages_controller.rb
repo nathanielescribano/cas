@@ -50,12 +50,16 @@ class PagesController < ApplicationController
     id = @selected_items.first['id']
 
     @vendor = find_vendor_by_menu_item_id id
+    @vendor = Venue.new(Venue.test_string)
   end
 
   def add_to_cart
     session[:max_price] ||= params[:max_price]
     selected_items = session[:selected_items]
 
+    session[:money_left] ||= params[:money_left]
+    
+    
     if params[:id]
       # if params[:id] is nil - then it's likely the first
       # call - in which there are no selected_items

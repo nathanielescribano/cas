@@ -3,4 +3,5 @@ Cas::Application.routes.draw do
   get 'pages/search'
   get 'pages/add_to_cart'
   get 'pages/restart'
+  get 'pages/finalize'
 end

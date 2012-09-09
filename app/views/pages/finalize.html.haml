@@ -1,0 +1,8 @@
+#cart_items
+  %h4
+    - if @selected_items
+      Your Final Item Summary
+      %h4 Restaurant
+      %br #{@vendor.data["objects"].first["name"]}
+      - for item in @selected_items
+        %label #{item[:name]} #{item[:price]}
