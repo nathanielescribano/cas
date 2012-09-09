@@ -1,8 +1,8 @@
 class MenuItem
   attr_accessor :data
   
-  def initialize(string)
-    @data = JSON.parse(string)
+  def initialize(hash)
+    @data = hash
   end
 
   def find_venue_id_by_id(menu_item_id)
@@ -29,10 +29,16 @@ class MenuItem
     return nil unless @data["objects"]
 
     if keys == nil || keys == {}
-      return @data["objects"].map { |o| [ o["name"],o["id"]] }
+      return @data["objects"].map do |object|
+        [ "name" => o["name"], "id" => o["id"]]
+      end
     end
 
-    return @data["objects"].map { |o| keys.map { |key| o[key]} }
+    return @data["objects"].map do |object|
+      object.delete_if do |object_key|
+        !keys.include? object_key
+      end
+    end
   end
  
   def self.test_string()
