@@ -30,7 +30,7 @@ class MenuItem
 
     if keys == nil || keys == {}
       return @data["objects"].map do |object|
-        [ "name" => o["name"], "id" => o["id"]]
+        [ "name" => object["name"], "id" => object["id"]]
       end
     end
 
