@@ -19,7 +19,7 @@
 
 #stats
   Money Left: 
-  %label{:id => "money_left", :value => "yash"} 
+  %label{:id => "money_left", :value => "100"} 5
   
 #results
 %input{:action => "submit", :type => "button", :value => "Add to Cart", :class => "button", :id => "reload_submit_btn", :onclick => "postToSelf()"}
@@ -28,14 +28,13 @@
   :plain
     function populate(){
       //alert("yeay");
-      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&max_price=" + $('#max_price').val());
+      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').val());
     }
     
     function postToSelf(){
     	var allVals = [];
       	$('#result_checkboxes :checked').each(function() {
         	allVals[0] = ($(this).val());
-        	allVals[1] = $(this).
       	});
     	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').val()+"&id="+allVals[0]+"&name="+"&price=");
     }

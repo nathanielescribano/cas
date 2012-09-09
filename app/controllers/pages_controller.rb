@@ -5,15 +5,20 @@ class PagesController < ActionController::Base
   def index
     session[:max_price] ||= params[:max_price]
     session[:selected_items] ||= []
-    session[:selected_items] << menu_item_data_from_param(params)
-    @selected_items = session[:selected_items]
+
+    # if params[:id] is nil - then it's likely the first
+    # call - in which there are no selected_items
+    if params[:id]
+      session[:selected_items] << menu_item_data_from_param(params)
+      @selected_items = session[:selected_items]
+    end
   end
 
   def search
-
+    @menu_item_data = []
     if params['menu_item'] && params['money_left']
       lc = get_locu_client
-      @menu_item_data = menu_item_data
+      @menu_item_data = menu_item_data(lc, params)
     end
     
   end
