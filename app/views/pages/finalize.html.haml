@@ -1,12 +1,16 @@
-#cart_items
+#finalize
   - if @selected_items
     %h1 Your Final Item Summary
     %br
     -if @vendor
       %h2
-        #{@vendor.data["objects"].first["name"]} at
-        #{@vendor.data["objects"].first["street_address"]}
-        #{@vendor.data["objects"].first["locality"]},
-        #{@vendor.data["objects"].first["region"]}
+        #{@vendor.data["objects"].first["name"]}
+        %br
+        %h5
+          <div style="color:black;">#{@vendor.data["objects"].first["street_address"]}</div>
+          <div style="color:black;">#{@vendor.data["objects"].first["locality"]},
+          #{@vendor.data["objects"].first["region"]}</div>
+          = link_to 'Homepage', @vendor.data["objects"].first["website_url"]
     - for item in @selected_items
-      %h3 #{item[:name]} #{item[:price]}
+      %h3 #{item[:name]} $#{item[:price]}
+    %h3 Total $#{@selected_items.reduce(0) { |k,v| k + v[:price].to_f }}
