@@ -4,9 +4,13 @@
     %br
     -if @vendor
       %h2
-        #{@vendor.data["objects"].first["name"]} at
-        #{@vendor.data["objects"].first["street_address"]}
-        #{@vendor.data["objects"].first["locality"]},
-        #{@vendor.data["objects"].first["region"]}
+        #{@vendor.data["objects"].first["name"]}
+        %br
+        %h5
+          #{@vendor.data["objects"].first["street_address"]}
+          #{@vendor.data["objects"].first["locality"]},
+          #{@vendor.data["objects"].first["region"]}
+          %h5 #{@vendor.data["objects"].first["website_url"]}
     - for item in @selected_items
-      %h3 #{item[:name]} #{item[:price]}
+      %h3 #{item[:name]} $#{item[:price]}
+    %h3 Total $#{@selected_items.reduce(0) { |k,v| k + v[:price].to_f }}
