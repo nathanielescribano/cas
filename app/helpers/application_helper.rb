@@ -24,4 +24,9 @@ module ApplicationHelper
     mi.find_venue_id_by_id(id)
   end
 
+  def sorted_menu_item_data(lc, search_hash)
+    mid = menu_item_data(lc, search_hash)
+    mid.sort_by { |a| a["price"] }
+  end
+
 end

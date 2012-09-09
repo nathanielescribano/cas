@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     if params['menu_item'] && params['money_left']
       @search_value = params['menu_item']
       lc = get_locu_client
-      @menu_item_data = menu_item_data(lc, params)
+      @menu_item_data = sorted_menu_item_data(lc, params)
     end
     # we are limiting results for now..
     @menu_item_data = @menu_item_data[0..5]
