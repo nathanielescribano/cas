@@ -34,6 +34,8 @@
       $("#max_price").keyup(function() {
         $("#money_left").text($("#max_price").val());
       })
+      
+      
     });
 
     function populate(){
@@ -47,6 +49,12 @@
         	allVals[0] = ($(this).val());
       	});
     	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').val()+"&id="+allVals[0]+"&name="+"&price=");
+    }
+    
+    function calculateResultCartTotal(){
+    	$('#result_checkboxes :checked').each(function() {
+          $("#money_left").text($("#money_left").val()+1);
+        })
     }
 
     

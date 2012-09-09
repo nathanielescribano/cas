@@ -1,6 +1,6 @@
 - for item in @menu_item_data
   %div
-    %input{:type=>"checkbox", :name=>"result_checkboxes", :id => item['id'], :checked=>false}= item['name'] + " " + item['price'].to_s
+    %input{:type=>"checkbox",:class => "result_checkboxes", :name=>"result_checkboxes", :id => item['id'], :checked=>false}= item['name'] + " " + item['price'].to_s
   -#    = check_box_tag item[:id], item[:id], false
   -#    = item[:name] + " " + item[:price].to_s
   
