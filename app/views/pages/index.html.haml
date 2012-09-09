@@ -64,7 +64,7 @@
    
 
     function populate(){
-      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').text() + "&latitude=" + $('#latitude').val() + "&longitude=" + $('#longitude').val());
+      $('#results').load("pages/search/?menu_item=" + encodeURIComponent($('#menu_item').val()) + "&money_left=" + $('#money_left').text() + "&latitude=" + $('#latitude').val() + "&longitude=" + $('#longitude').val());
       
     }
 
@@ -84,7 +84,7 @@
           checked_long = $(this).attr("item_long");
           checked_price = $(this).attr("price");
         });
-    	window.location.replace("/pages/add_to_cart?max_price=" + $('#max_price').val() + "&lat="+checked_lat+"&long="+checked_long+"&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
+    	window.location.replace("/pages/add_to_cart?max_price=" + $('#max_price').val() + "&lat="+checked_lat+"&long="+checked_long+"&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+encodeURIComponent(checked_name)+"&price="+checked_price);
     }
     
     function calculateResultCartTotal(){
