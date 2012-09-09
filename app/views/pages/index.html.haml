@@ -11,8 +11,7 @@
               = session[:max_price] if session[:max_price]
           #money_left_label
             money left
-            %label{:id => "money_left"}
-              = @money_left if @money_left
+            %label{:id => "money_left"} #{@money_left if @money_left}
   .row-fluid
     .span4#search_box
       - unless @money_left
