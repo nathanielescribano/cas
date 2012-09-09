@@ -15,17 +15,24 @@
       %li
         %label{:for => "max_price"} Max Price:
         %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text"}
-    %input{:type => "button", :value => "Add", :class => "button", :id => "submit_btn", :onclick => "populate()"}
+    %input{:type => "button", :value => "Find", :class => "button", :id => "submit_btn", :onclick => "populate()"}
 
-
-#container
+#stats
+  Money Left: 
+  %label{:id => "money_left", :value => "yash"} 
+  
+#results
+%input{:action => "submit", :type => "button", :value => "Add to Cart", :class => "button", :id => "reload_submit_btn", :onclick => "postToSelf()"}
 
 %script{:type => "text/javascript"}
   :plain
     function populate(){
       //alert("yeay");
-      $('#container').load("pages/search/?menu_item=" + $('#menu_item').val() + "&max_price=" + $('#max_price').val());
-      
+      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&max_price=" + $('#max_price').val());
+    }
+    
+    function postToSelf(){
+    	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').val()+"&id="+"&name="+"&price=");
     }
 
     
