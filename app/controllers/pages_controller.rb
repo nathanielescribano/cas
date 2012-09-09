@@ -10,10 +10,12 @@ class PagesController < ActionController::Base
   end
 
   def search
+
     if params['menu_item'] && params['money_left']
       lc = get_locu_client
       @menu_item_data = menu_item_data
     end
+    
   end
 
   def finalize

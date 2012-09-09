@@ -32,7 +32,12 @@
     }
     
     function postToSelf(){
-    	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').val()+"&id="+"&name="+"&price=");
+    	var allVals = [];
+      	$('#result_checkboxes :checked').each(function() {
+        	allVals[0] = ($(this).val());
+        	allVals[1] = $(this).
+      	});
+    	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').val()+"&id="+allVals[0]+"&name="+"&price=");
     }
 
     
