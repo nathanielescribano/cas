@@ -7,10 +7,10 @@
         #{@vendor.data["objects"].first["name"]}
         %br
         %h5
-          #{@vendor.data["objects"].first["street_address"]}
-          #{@vendor.data["objects"].first["locality"]},
-          #{@vendor.data["objects"].first["region"]}
-          %h5 #{@vendor.data["objects"].first["website_url"]}
+          <div style="color:black;">#{@vendor.data["objects"].first["street_address"]}</div>
+          <div style="color:black;">#{@vendor.data["objects"].first["locality"]},
+          #{@vendor.data["objects"].first["region"]}</div>
+          %h5 <i>#{@vendor.data["objects"].first["website_url"]}</i>
     - for item in @selected_items
       %h3 #{item[:name]} $#{item[:price]}
     %h3 Total $#{@selected_items.reduce(0) { |k,v| k + v[:price].to_f }}
