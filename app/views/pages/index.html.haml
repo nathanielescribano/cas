@@ -28,7 +28,7 @@
   :plain
     function populate(){
       //alert("yeay");
-      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').val());
+      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').text());
     }
     
     function postToSelf(){
