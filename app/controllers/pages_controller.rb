@@ -23,7 +23,6 @@ class PagesController < ApplicationController
       if @selected_items
         si = @selected_items.first
         params.merge!({:lat => si[:lat], :long => si[:long]})
-        
         @menu_item_data = sorted_menu_item_data_with_vendor(lc, params)
       else
         @menu_item_data = sorted_menu_item_data(lc, params)

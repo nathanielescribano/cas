@@ -7,9 +7,13 @@ module ApplicationHelper
   end
 
   def menu_item_data(lc, search_hash)
-    # we are hardcoding the lat and longitude
-    # to sf for dome purposes
-    lat_and_long = "37.778,-122.422"
+    if !search_hash[:latitude].blank? && !search_hash[:longitude].blank?
+      lat_and_long = "#{search_hash[:latitude]},#{search_hash[:longitude]}"
+    else
+      # we are hardcoding the lat and longitude
+      # to sf for dome purposes
+      lat_and_long = "37.778,-122.422"
+    end
 
     lc_result_hash  = lc.menu.search_by({ :name => search_hash['menu_item'],
                                           :price__lte => search_hash['money_left'],

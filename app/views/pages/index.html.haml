@@ -18,6 +18,8 @@
             Cheap Cart Items
             - for item in @selected_items
               %label #{item[:name]} #{item[:price]}
+  %input{:type => "hidden", :id => "latitude", :name => "latitude", :value => nil }
+  %input{:type => "hidden", :id => "longitude", :name => "longitude", :value => nil }
   .row-fluid
     .span4#search_box
       - unless @money_left
@@ -41,6 +43,8 @@
       });
 
       $('.result_select').change( update_money_left_color() );
+
+      getLocation();
       
     });
     
@@ -60,8 +64,7 @@
    
 
     function populate(){
-      //alert("yeay");
-      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').text());
+      $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').text() + "&latitude=" + $('#latitude').val() + "&longitude=" + $('#longitude').val());
       
     }
 
@@ -95,4 +98,15 @@
       //alert("yeay");
       window.location.replace("pages/finalize");
     }
-    
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(updatePosition);
+      }
+    }
+
+    function updatePosition(position) {
+      $("#latitude").val(position.coords.latitude);
+      $("#longitude").val(position.coords.longitude);
+    }
+
