@@ -1,13 +1,20 @@
 #search_results.span4
-  %h3
+  %h3.ct
     = "Results for #{@search_value}"
   - for item in @menu_item_data
-    %div
-      %input{:type=>"radio", :name=>"result_radio", :id => item['id'], :checked=>false, :value => item['id'], :item_name => item['name'], :price => item['price']}= item['name'] + " " + item['price'].to_s
+    .radio
+      %input{:type=>"radio",
+      :name=>"result_radio",
+      :id => item['id'],
+      :checked=>false,
+      :value => item['id'],
+      :item_name => item['name'],
+      :price => item['price']}= item['name'] + " " + item['price'].to_s
+
   %input{ :action => "submit", 
           :type => "button", 
           :value => "Add to Cart", 
-          :class => "btn btn-large", 
+          :class => "btn btn-large btn-block", 
           :id => "reload_submit_btn", 
           :style => @menu_item_data.blank? ? 'display:none' : nil,
           :onclick => "postToSelf()"}
