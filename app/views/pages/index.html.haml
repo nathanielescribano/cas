@@ -1,5 +1,5 @@
 %script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
-
+= session.inspect
 %form{ :action => ""}
   .row-fluid
     .span4
@@ -8,6 +8,7 @@
           #max_price_label
             max price
             %label{:id => "money_max_price"}
+              = session[:max_price] if session[:max_price]
           #money_left_label
             money left
             %label{:id => "money_left"}
@@ -16,6 +17,7 @@
       %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text", :disabled => @selected_items == nil ? nil : "disabled", :placeholder => "Max Price"}
       %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text", :placeholder => "Menu Item" }
       %input{:type => "button", :value => "Find", :class => "btn btn-large btn-block", :id => "submit_btn", :onclick => "populate()"}
+      %input{:type => "button", :value => "Restart", :class => "btn btn-block", :id => "submit_btn", :onclick => "restart()"}
     .span7
       #results
 %script{:type => "text/javascript"}
@@ -31,6 +33,11 @@
       //alert("yeay");
       $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').text());
     }
+
+    function restart(){
+      //alert("yeay");
+    	window.location.replace("http://localhost:3000/pages/restart");
+    }
     
     function postToSelf(){
       checked_id = null
@@ -42,7 +49,7 @@
           checked_name = $(this).attr("name");
           checked_price = $(this).attr("price");
         });
-    	window.location.replace("http://localhost:3000/?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
+    	window.location.replace("http://localhost:3000/pages/add_to_cart?max_price=" + $('#max_price').val() + "&money_left="+$('#money_left').text()+"&id="+checked_id+"&name="+checked_name+"&price="+checked_price);
     }
 
     

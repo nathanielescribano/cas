@@ -3,15 +3,7 @@ class PagesController < ApplicationController
   include ApplicationHelper
 
   def index
-    session[:max_price] ||= params[:max_price]
-    session[:selected_items] ||= []
-
-    # if params[:id] is nil - then it's likely the first
-    # call - in which there are no selected_items
-    if params[:id]
-      session[:selected_items] << menu_item_data_from_param(params)
-      @selected_items = session[:selected_items]
-    end
+    @selected_items = session[:selected_items]
   end
 
   def search
@@ -36,6 +28,29 @@ class PagesController < ApplicationController
     id = @selected_items.first['id']
 
     @vendor = find_vendor_by_menu_item_id id
+  end
+
+  def add_to_cart
+    session[:max_price] ||= params[:max_price]
+    selected_items = session[:selected_items]
+
+    if params[:id]
+      # if params[:id] is nil - then it's likely the first
+      # call - in which there are no selected_items
+      session[:selected_items] ||= []
+      session[:selected_items] << menu_item_data_from_param(params)
+      @selected_items = session[:selected_items]
+    end
+
+    redirect_to :action => "index"
+  end
+
+  def restart
+    session[:max_price] = nil
+    session[:money_left] = nil #should not occur
+    session[:selected_items] = nil
+
+    redirect_to :action => "index"
   end
 
 end
