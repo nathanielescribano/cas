@@ -76,7 +76,7 @@
       checked_price = null
       var allVals = [];
         $('option:selected').each(function() {
-          checked_id = $(this).val();
+          checked_id = $(this).attr("id");
           checked_name = $(this).attr("item_name");
           checked_lat = $(this).attr("item_lat");
           checked_long = $(this).attr("item_long");

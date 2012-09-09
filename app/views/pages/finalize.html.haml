@@ -2,10 +2,11 @@
   - if @selected_items
     %h1 Your Final Item Summary
     %br
-    %h2
-      #{@vendor.data["objects"].first["name"]} at
-      #{@vendor.data["objects"].first["street_address"]}
-      #{@vendor.data["objects"].first["locality"]},
-      #{@vendor.data["objects"].first["region"]}
+    -if @vendor
+      %h2
+        #{@vendor.data["objects"].first["name"]} at
+        #{@vendor.data["objects"].first["street_address"]}
+        #{@vendor.data["objects"].first["locality"]},
+        #{@vendor.data["objects"].first["region"]}
     - for item in @selected_items
       %h3 #{item[:name]} #{item[:price]}

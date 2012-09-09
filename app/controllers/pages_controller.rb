@@ -14,6 +14,7 @@ class PagesController < ApplicationController
 
   def search
     @menu_item_data = []
+    
     if params['menu_item'] && params['money_left']
       @search_value = params['menu_item']
       lc = get_locu_client
@@ -47,10 +48,9 @@ class PagesController < ApplicationController
     # all the selected_items should point to the same
     # vendor. therefore, it doesn't matter which id
     # we use
-    id = @selected_items.first['id']
-
+    id = @selected_items.first[:id]
+    
     @vendor = find_vendor_by_menu_item_id id
-    @vendor = Venue.new(Venue.test_string)
   end
 
   def add_to_cart

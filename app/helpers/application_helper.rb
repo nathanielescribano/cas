@@ -18,10 +18,20 @@ module ApplicationHelper
   end
 
   def find_vendor_by_menu_item_id(id)
-    lc = get_locu_client
-    lc_result_hash  = lc.menu.search_by_id id
-    mi = MenuItem.new(lc_result_hash)
-    mi.find_venue_id_by_id(id)
+    logger.info "http://api.locu.com/v1_0/menu_item/#{id}/?api_key=4b11590e2053dbe2b02adbc82c30f48dcf78dfec"
+    url = URI.parse("http://api.locu.com/v1_0/menu_item/#{id}/?api_key=4b11590e2053dbe2b02adbc82c30f48dcf78dfec")
+    res = Net::HTTP.get_response(url)
+    if res.is_a?(Net::HTTPSuccess)
+      mi = MenuItem.new(JSON.parse(res.body)) if res.is_a?(Net::HTTPSuccess)
+    else
+      return nil
+    end
+    
+    venue_id =  mi.find_venue_id_by_id(id)
+    logger.info "http://api.locu.com/v1_0/venue/#{venue_id}/?api_key=4b11590e2053dbe2b02adbc82c30f48dcf78dfec"
+    url = URI.parse("http://api.locu.com/v1_0/venue/#{venue_id}/?api_key=4b11590e2053dbe2b02adbc82c30f48dcf78dfec")
+    res = Net::HTTP.get_response(url)
+    Venue.new(JSON.parse(res.body))
   end
 
   def sorted_menu_item_data(lc, search_hash)
