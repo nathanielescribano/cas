@@ -1,2 +1,32 @@
+%script{:type => "text/javascript", :src => "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"}
+
+
+    
+    
 %h1
-  HELLO WORLD
+  Cheap Ass Shit
+  
+%form{ :action => ""}
+  %fieldset
+    %ol
+      %li
+        %label{:for => "menu_item"} Menu Item:
+        %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text"}
+      %li
+        %label{:for => "max_price"} Max Price:
+        %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text"}
+    %input{:type => "button", :value => "Add", :class => "button", :id => "submit_btn", :onclick => "populate()"}
+
+
+#container
+
+%script{:type => "text/javascript"}
+  :plain
+    function populate(){
+      //alert("yeay");
+      $('#container').load("pages/search/?menu_item=" + $('#menu_item').val() + "&max_price=" + $('#max_price').val());
+      
+    }
+
+    
+    
