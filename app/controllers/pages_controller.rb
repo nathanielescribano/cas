@@ -1,4 +1,4 @@
-class PagesController < ActionController::Base
+class PagesController < ApplicationController
   protect_from_forgery
   include ApplicationHelper
 

@@ -15,14 +15,14 @@
       %li
         %label{:for => "max_price"} Max Price:
         %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text"}
-    %input{:type => "button", :value => "Find", :class => "button", :id => "submit_btn", :onclick => "populate()"}
+    %input{:type => "button", :value => "Find", :class => "btn", :id => "submit_btn", :onclick => "populate()"}
 
 #stats
   Money Left: 
   %label{:id => "money_left"} 
   
 #results
-%input{:action => "submit", :type => "button", :value => "Add to Cart", :class => "button", :id => "reload_submit_btn", :onclick => "postToSelf()"}
+%input{:action => "submit", :type => "button", :value => "Add to Cart", :class => "btn", :id => "reload_submit_btn", :onclick => "postToSelf()"}
 
 %script{:type => "text/javascript"}
   :plain
