@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require_tree .
-*/
+ */
 
 .content {
   background-color: #eee;
@@ -33,31 +33,30 @@
 }
 
 #money_left_label {
-    background: none repeat scroll 0 0 #66FF99;
-    border-radius: 10px 10px 10px 10px;
-    padding: 15px;
-    margin: 1px;
+  border-radius: 10px 10px 10px 10px;
+  padding: 15px;
+  margin: 1px;
 }
 
 #max_price_label {
-    background: none repeat scroll 0 0 #0099FF;
-    border-radius: 10px 10px 10px 10px;
-    padding: 15px;
-    margin: 1px;
+  background: none repeat scroll 0 0 #0099FF;
+  border-radius: 10px 10px 10px 10px;
+  padding: 15px;
+  margin: 1px;
 }
 
 #search_results {
-    background: none repeat scroll 0 0 #0099FF;
-    border-radius: 10px 10px 10px 10px;
-    padding: 15px;
-    margin: 1px;
+  background: none repeat scroll 0 0 #0099FF;
+  border-radius: 10px 10px 10px 10px;
+  padding: 15px;
+  margin: 1px;
 }
 
 #search_box {
-    background: none repeat scroll 0 0 #008ae6;
-    border-radius: 10px 10px 10px 10px;
-    padding: 15px;
-    margin: 1px;
+  background: none repeat scroll 0 0 #008ae6;
+  border-radius: 10px 10px 10px 10px;
+  padding: 15px;
+  margin: 1px;
 }
 
 input[type="button"].btn-block {
@@ -68,6 +67,22 @@ input[type=text] {
   width: 95%; box-sizing: border-box; height: 28px;
 }
 
+#search_results select {
+  width: 100%;
+}
+
 .radio {
   margin: 5px;
+}
+
+.money_left_green {
+  background: none repeat scroll 0 0 #66FF99;
+}
+
+.money_left_yellow {
+  background: none repeat scroll 0 0 #ffe600;
+}
+
+.money_left_red {
+  background: none repeat scroll 0 0 #FF0033;
 }

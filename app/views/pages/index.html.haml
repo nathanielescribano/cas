@@ -9,10 +9,14 @@
             max price
             %label{:id => "money_max_price"}
               = session[:max_price] if session[:max_price]
-          #money_left_label
+          #money_left_label.money_left_green
             money left
-            %label{:id => "money_left"}
-              = @money_left if @money_left
+            %label{:id => "money_left"} #{@money_left if @money_left}
+    .span2
+      - if @selected_items
+        Cheap Cart Items
+        - for item in @selected_items
+          %label #{item[:name]} #{item[:price]}
   .row-fluid
     .span4#search_box
       - unless @money_left
@@ -20,7 +24,7 @@
       %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text", :placeholder => "Menu Item" }
       %input{:type => "button", :value => "Find", :class => "btn btn-large btn-block", :id => "submit_btn", :onclick => "populate()"}
       %input{:type => "button", :value => "Restart", :class => "btn btn-block", :id => "submit_btn", :onclick => "restart()"}
-      %input{:type => "hidden",:value => "",:id => "money_left_hidden"}
+      %input{:type => "hidden",:id => "money_left_hidden", :value => session[:money_left] == nil ? "" : session[:money_left]}
   .row-fluid
     .span12
       #results
@@ -32,10 +36,24 @@
         $("#money_max_price").text($("#max_price").val());
         $("#money_left_hidden").val($("#max_price").val());
       });
-      
+
+      $('.result_select').change( update_money_left_color() );
       
     });
     
+    function update_money_left_color(){
+      money_max = $("#money_max_price").text();
+      money_left = $("#money_left").text();
+      ratio = money_left/money_max;
+
+      if (ratio < .30) {
+        $("#money_left_label").removeClass("money_left_green money_left_yellow");
+        $("#money_left_label").addClass("money_left_red");
+      }else if (ratio < .60) {
+        $("#money_left_label").removeClass("money_left_green money_left_red");
+        $("#money_left_label").addClass("money_left_yellow");
+      }
+    }
    
 
     function populate(){
@@ -54,7 +72,7 @@
       checked_name = null
       checked_price = null
       var allVals = [];
-        $('input:checked').each(function() {
+        $('option:selected').each(function() {
           checked_id = $(this).val();
           checked_name = $(this).attr("item_name");
           checked_price = $(this).attr("price");
@@ -63,8 +81,8 @@
     }
     
     function calculateResultCartTotal(){
-      //alert($('input[name=result_radio]:checked').val());
-      $("#money_left").text(parseFloat($("#money_left_hidden").val())-parseFloat($('input[name=result_radio]:checked').val()));
+      //alert("shit");
+      $("#money_left").text(parseFloat($("#money_left_hidden").val())-parseFloat($('.result_select').val()));
     }
 
     

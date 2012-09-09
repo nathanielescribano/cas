@@ -6,8 +6,7 @@ class PagesController < ApplicationController
     @selected_items = session[:selected_items]
     if session[:max_price]
       @money_left = session[:max_price]
-      used = @selected_items.reduce(@money_left.to_f) { |sum,v| sum - v[:price].to_f }
-      @money_left = (@money_left.to_f - used).to_s
+      @money_left = (@selected_items.reduce(@money_left.to_f) { |sum,v| sum - v[:price].to_f }).round(2).to_s
     else
       @money_left = nil
     end
@@ -41,6 +40,9 @@ class PagesController < ApplicationController
     session[:max_price] ||= params[:max_price]
     selected_items = session[:selected_items]
 
+    session[:money_left] ||= params[:money_left]
+    
+    
     if params[:id]
       # if params[:id] is nil - then it's likely the first
       # call - in which there are no selected_items
