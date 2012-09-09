@@ -9,7 +9,7 @@
             max price
             %label{:id => "money_max_price"}
               = session[:max_price] if session[:max_price]
-          #money_left_label
+          #money_left_label.money_left_green
             money left
             %label{:id => "money_left"} #{@money_left if @money_left}
   .row-fluid
@@ -29,10 +29,24 @@
         $("#money_left").text($("#max_price").val());
         $("#money_max_price").text($("#max_price").val());
       });
-      
+
+      $('.result_select').change( update_money_left_color() );
       
     });
     
+    function update_money_left_color(){
+      money_max = $("#money_max_price").text();
+      money_left = $("#money_left").text();
+      ratio = money_left/money_max;
+
+      if (ratio < .30) {
+        $("#money_left_label").removeClass("money_left_green money_left_yellow");
+        $("#money_left_label").addClass("money_left_red");
+      }else if (ratio < .60) {
+        $("#money_left_label").removeClass("money_left_green money_left_red");
+        $("#money_left_label").addClass("money_left_yellow");
+      }
+    }
    
 
     function populate(){

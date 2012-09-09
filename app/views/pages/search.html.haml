@@ -1,7 +1,7 @@
 #search_results.span4
   %h3.ct
     = "Results for #{@search_value}"
-  %select
+  %select{:class => 'result_select'}
     - for item in @menu_item_data
       %option{ :name=>"result_radio",
       :id => item['id'],
