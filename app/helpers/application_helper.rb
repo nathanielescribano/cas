@@ -7,8 +7,14 @@ module ApplicationHelper
   end
 
   def menu_item_data(lc, search_hash)
+    # we are hardcoding the lat and longitude
+    # to sf for dome purposes
+    lat_and_long = "37.778,-122.422"
+
     lc_result_hash  = lc.menu.search_by({ :name => search_hash['menu_item'],
-                                          :price__lte => search_hash['money_left']})
+                                          :price__lte => search_hash['money_left'],
+                                          :radius => 6000,
+                                          :location => lat_and_long})
     mi = MenuItem.new(lc_result_hash)
     mi.item_list_with(['id', 'name', 'price', 'venue'])
   end
