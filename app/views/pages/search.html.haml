@@ -1,7 +1,10 @@
 - for item in @menu_item_data
   %div
-    %input{:type=>"checkbox",:class => "result_checkboxes", :name=>"result_checkboxes", :id => item['id'], :checked=>false}= item['name'] + " " + item['price'].to_s
-  -#    = check_box_tag item[:id], item[:id], false
-  -#    = item[:name] + " " + item[:price].to_s
-  
-    
+    %input{:type=>"checkbox", :class => "result_checkboxes", :name=>"result_checkboxes",:onclick => "calculateResultCartTotal()", :id => item['id'], :checked=>false, :value => item['price']}= item['name'] + " " + item['price'].to_s
+%input{ :action => "submit", 
+        :type => "button", 
+        :value => "Add to Cart", 
+        :class => "btn btn-large", 
+        :id => "reload_submit_btn", 
+        :style => @menu_item_data.blank? ? 'display:none' : nil,
+        :onclick => "postToSelf()"}
