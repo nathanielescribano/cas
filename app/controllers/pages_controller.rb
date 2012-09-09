@@ -37,4 +37,11 @@ class PagesController < ApplicationController
     @vendor = find_vendor_by_menu_item_id id
   end
 
+  def restart
+    session[:max_price] = nil
+    session[:selected_items] = []
+
+    redirect_to :action => "index"
+  end
+
 end
