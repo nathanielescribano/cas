@@ -19,13 +19,19 @@
 
 #stats
   Money Left: 
-  %label{:id => "money_left", :value => "100"} 5
+  %label{:id => "money_left"} 
   
 #results
 %input{:action => "submit", :type => "button", :value => "Add to Cart", :class => "button", :id => "reload_submit_btn", :onclick => "postToSelf()"}
 
 %script{:type => "text/javascript"}
   :plain
+    $(document).ready(function(){
+      $("#max_price").keyup(function() {
+        $("#money_left").text($("#max_price").val());
+      })
+    });
+
     function populate(){
       //alert("yeay");
       $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').text());
