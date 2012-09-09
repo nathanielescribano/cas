@@ -8,13 +8,12 @@
   
 %form{ :action => ""}
   %fieldset
-    %ol
-      %li
-        %label{:for => "menu_item"} Menu Item:
-        %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text"}
-      %li
-        %label{:for => "max_price"} Max Price:
-        %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text"}
+    %li
+      %label{:for => "menu_item"} Menu Item:
+      %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text"}
+    %li
+      %label{:for => "max_price"} Max Price:
+      %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text", :disabled => @selected_items == nil ? nil : "disabled"}
     %input{:type => "button", :value => "Find", :class => "btn", :id => "submit_btn", :onclick => "populate()"}
 
 #stats
