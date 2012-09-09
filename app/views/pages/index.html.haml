@@ -12,9 +12,11 @@
           #money_left_label
             money left
             %label{:id => "money_left"}
+              = @money_left if @money_left
   .row-fluid
     .span4#search_box
-      %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text", :disabled => @selected_items == nil ? nil : "disabled", :placeholder => "Max Price"}
+      - unless @money_left
+        %input{:type => "text", :id => "max_price",  :name => "max_price", :class => "text", :disabled => @selected_items == nil ? nil : "disabled", :placeholder => "Max Price"}
       %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text", :placeholder => "Menu Item" }
       %input{:type => "button", :value => "Find", :class => "btn btn-large btn-block", :id => "submit_btn", :onclick => "populate()"}
       %input{:type => "button", :value => "Restart", :class => "btn btn-block", :id => "submit_btn", :onclick => "restart()"}
