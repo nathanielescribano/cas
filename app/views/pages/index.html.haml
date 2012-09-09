@@ -45,7 +45,7 @@
       checked_name = null
       checked_price = null
       var allVals = [];
-        $('input:checked').each(function() {
+        $('option:selected').each(function() {
           checked_id = $(this).val();
           checked_name = $(this).attr("item_name");
           checked_price = $(this).attr("price");

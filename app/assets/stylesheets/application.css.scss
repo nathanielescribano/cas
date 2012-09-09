@@ -68,6 +68,10 @@ input[type=text] {
   width: 95%; box-sizing: border-box; height: 28px;
 }
 
+#search_results select {
+  width: 100%;
+}
+
 .radio {
   margin: 5px;
 }
