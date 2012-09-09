@@ -34,6 +34,7 @@ class PagesController < ApplicationController
     id = @selected_items.first['id']
 
     @vendor = find_vendor_by_menu_item_id id
+    @vendor = Venue.new(Venue.test_string)
   end
 
   def add_to_cart
