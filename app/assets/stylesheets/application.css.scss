@@ -46,3 +46,24 @@
     margin: 1px;
 }
 
+#search_results {
+    background: none repeat scroll 0 0 #0099FF;
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    margin: 1px;
+}
+
+#search_box {
+    background: none repeat scroll 0 0 #008ae6;
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    margin: 1px;
+}
+
+input[type="button"].btn-block {
+  width: 100%;
+}
+
+input[type=text] {
+  width: 95%; box-sizing: border-box; height: 28px;
+}
