@@ -27,3 +27,22 @@
 .ct {
   text-align: center;
 }
+
+#stats {
+  font-weight:bold;
+}
+
+#money_left_label {
+    background: none repeat scroll 0 0 #66FF99;
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    margin: 1px;
+}
+
+#max_price_label {
+    background: none repeat scroll 0 0 #0099FF;
+    border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    margin: 1px;
+}
+

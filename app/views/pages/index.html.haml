@@ -26,9 +26,6 @@
   .row-fluid
     .span4
       %input{:type => "button", :value => "Find", :class => "btn btn-large btn-primary", :id => "submit_btn", :onclick => "populate()"}
-    .span4
-      %input{:action => "submit", :type => "button", :value => "Add to Cart", :class => "btn btn-large", :id => "reload_submit_btn", :onclick => "postToSelf()"}
-        
 %script{:type => "text/javascript"}
   :plain
     $(document).ready(function(){

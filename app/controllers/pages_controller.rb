@@ -20,6 +20,8 @@ class PagesController < ApplicationController
       lc = get_locu_client
       @menu_item_data = menu_item_data(lc, params)
     end
+    # we are limiting results for now..
+    @menu_item_data = @menu_item_data[0..5]
     
   end
 
