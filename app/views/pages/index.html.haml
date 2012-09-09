@@ -26,6 +26,8 @@
       %input{:type => "button", :value => "Find", :class => "btn btn-large btn-block", :id => "submit_btn", :onclick => "populate()"}
       %input{:type => "button", :value => "Restart", :class => "btn btn-block", :id => "submit_btn", :onclick => "restart()"}
       %input{:type => "hidden",:id => "money_left_hidden", :value => session[:money_left] == nil ? "" : session[:money_left]}
+      - if @selected_items
+        %input{:type => "button", :value => "Finalize", :class => "btn btn-block", :id => "submit_btn", :onclick => "finalize()"}
   .row-fluid
     .span12
       #results
@@ -86,5 +88,9 @@
       $("#money_left").text(parseFloat($("#money_left_hidden").val())-parseFloat($('.result_select').val()));
     }
 
-    
+
+    function populate(){
+      //alert("yeay");
+      $('#results').load("pages/search/finalize");
+    }
     
