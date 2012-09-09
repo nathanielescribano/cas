@@ -19,3 +19,7 @@ gem "json"
 gem "locu_wrapper"
 gem "pry"
 gem "debugger"
+
+group :production do
+  gem "pg"
+end
