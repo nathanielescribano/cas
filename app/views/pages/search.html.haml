@@ -5,12 +5,13 @@
     .radio
       %input{:type=>"radio",
       :name=>"result_radio",
+      :class=>"result_radio",
       :id => item['id'],
       :checked=>false,
-      :value => item['id'],
+      :value => item['price'],
       :item_name => item['name'],
+      :onclick => "calculateResultCartTotal()",
       :price => item['price']}= item['name'] + " " + item['price'].to_s
-
   %input{ :action => "submit", 
           :type => "button", 
           :value => "Add to Cart", 

@@ -20,6 +20,7 @@
       %input{:type => "text", :id => "menu_item", :name => "menu_item", :class => "text", :placeholder => "Menu Item" }
       %input{:type => "button", :value => "Find", :class => "btn btn-large btn-block", :id => "submit_btn", :onclick => "populate()"}
       %input{:type => "button", :value => "Restart", :class => "btn btn-block", :id => "submit_btn", :onclick => "restart()"}
+      %input{:type => "hidden",:value => "",:id => "money_left_hidden"}
   .row-fluid
     .span12
       #results
@@ -29,6 +30,7 @@
       $("#max_price").keyup(function() {
         $("#money_left").text($("#max_price").val());
         $("#money_max_price").text($("#max_price").val());
+        $("#money_left_hidden").val($("#max_price").val());
       });
       
       
@@ -39,13 +41,6 @@
     function populate(){
       //alert("yeay");
       $('#results').load("pages/search/?menu_item=" + $('#menu_item').val() + "&money_left=" + $('#money_left').text());
-      
-      $(".result_checkboxes").on({
-    	click: function(){
-      		alert("first");
-      		calculateResultCartTotal();
-      	}
-      });
       
     }
 
@@ -68,11 +63,8 @@
     }
     
     function calculateResultCartTotal(){
-    	$('.result_checkboxes').each(function() {
-          if ($(this).is(':checked')) {
-            $("#money_left").text(parseInt($("#money_left").text()) + parseInt($(this).val()));
-          }
-        });
+      //alert($('input[name=result_radio]:checked').val());
+      $("#money_left").text(parseFloat($("#money_left_hidden").val())-parseFloat($('input[name=result_radio]:checked').val()));
     }
 
     
